@@ -79,7 +79,7 @@ local dockerfile = table.concat(flatten {
         "RUN pacman -S --noconfirm git make gcc readline wget inetutils diffutils which mingw-w64-gcc zip graphviz",
     },
     when(lapp) {
-        "RUN git clone https://github.com/CDSoft/lapp && ( cd lapp && git checkout "..LAPP_VERSION.." && make submodules && make linux windows && PREFIX=/usr/bin CHECKS=OFF make install ) && rm -rf lapp",
+        "RUN git clone https://github.com/CDSoft/lapp && ( cd lapp && git checkout "..LAPP_VERSION.." && make submodules && CHECKS=OFF make linux windows && PREFIX=/usr/bin CHECKS=OFF make install ) && rm -rf lapp",
     },
     when(upp) {
         "RUN git clone https://github.com/CDSoft/upp && lapp upp/upp.lua -o /usr/bin/upp && rm -rf upp",
