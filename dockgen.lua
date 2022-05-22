@@ -72,7 +72,7 @@ local dockerfile = table.concat(flatten {
         "RUN dnf install -y git make gcc which readline-devel wget hostname diffutils which mingw64-gcc zip graphviz",
     },
     when(debian or ubuntu) {
-        "RUN apt update && apt install -y git make gcc libreadline-dev wget gcc-mingw-w64 zip graphviz",
+        "RUN apt update && DEBIAN_FRONTEND=noninteractive TZ=Europe/Paris apt install -y git make gcc libreadline-dev wget gcc-mingw-w64 zip graphviz",
     },
     when(archlinux) {
         "RUN pacman -Sy --noconfirm",
