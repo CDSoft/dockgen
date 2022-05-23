@@ -69,14 +69,14 @@ local dockerfile = table.concat(flatten {
     "FROM "..OS..":"..OS_VERSION.." as "..TAG,
     'RUN useradd -Um user; echo "user  ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers',
     when(fedora) {
-        "RUN dnf install -y git make gcc which readline-devel wget hostname diffutils which mingw64-gcc zip graphviz",
+        "RUN dnf install -y git make gcc clang llvm clang-tools-extra which readline-devel wget hostname diffutils which mingw64-gcc zip graphviz",
     },
     when(debian or ubuntu) {
-        "RUN apt update && DEBIAN_FRONTEND=noninteractive TZ=Europe/Paris apt install -y git make gcc libreadline-dev wget gcc-mingw-w64 zip graphviz",
+        "RUN apt update && DEBIAN_FRONTEND=noninteractive TZ=Europe/Paris apt install -y git make gcc clang llvm clang-tidy clang-format libreadline-dev wget gcc-mingw-w64 zip graphviz",
     },
     when(archlinux) {
         "RUN pacman -Sy --noconfirm",
-        "RUN pacman -S --noconfirm git make gcc readline wget inetutils diffutils which mingw-w64-gcc zip graphviz",
+        "RUN pacman -S --noconfirm git make gcc clang readline wget inetutils diffutils which mingw-w64-gcc zip graphviz",
     },
     when(lapp) {
         "RUN git clone https://github.com/CDSoft/lapp && ( cd lapp && git checkout "..LAPP_VERSION.." && make submodules && CHECKS=OFF make linux windows && PREFIX=/usr/bin CHECKS=OFF make install ) && rm -rf lapp",
