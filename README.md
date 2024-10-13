@@ -2,6 +2,11 @@
 
 ## Introduction
 
+> [!WARNING]
+> This repository is no longer maintained and has been archived.
+>
+> Please consider using [LuaX](https://github.com/CDSoft/LuaX) and [pub](https://github.com/CDSoft/pub) instead.
+
 `dockgen.lua` generate a docker that can be used to build
 [LAPP](https://github.com/CDSoft/lapp),
 [UPP](https://github.com/CDSoft/upp),
